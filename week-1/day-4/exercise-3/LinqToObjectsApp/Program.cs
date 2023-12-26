@@ -15,10 +15,31 @@
 
             //Write queries using LINQ for following operations
             //1. Get all people from USA
+            var PersonFromUSA = people.Where(person => person.Country== "USA");
+           
+            foreach (var p in PersonFromUSA)
+            {
+                Console.WriteLine(p.Name);
+            }
             //2. Get all people above 30
+            var PersonAbove30 = people.Where(person => person.Age >= 30);
+            foreach (var p in PersonAbove30)
+            {
+                Console.WriteLine($"{p.Name} - {p.Age}");
+            }
             //3. Sort people by name
-            //4. Project/Select only Name and Country of all people
+            var PesonInSortedManner = people.OrderBy(person => person.Name);
+            foreach(var p in PesonInSortedManner)
+            {
+                Console.WriteLine(p.Name);
+            }
 
+            //4. Project/Select only Name and Country of all people
+            var OnlyNameAndCountry = people.Select(person => (person.Name,person.Country));
+            foreach(var p in OnlyNameAndCountry)
+            {
+                Console.WriteLine(p.Country);
+            }
         }
     }
 
